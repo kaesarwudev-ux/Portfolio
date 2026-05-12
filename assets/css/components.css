@@ -1,0 +1,74 @@
+/* components.css - Cards, forms, ASCII containers, filters, hover states */
+/* Magnetic base */
+.magnetic { transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform; }
+
+/* Project Cards / Build Logs */
+.project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--spacing-md); position: relative; }
+.project-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: var(--spacing-md);
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--transition-fast), max-height 0.25s ease;
+}
+.project-card:hover { border-color: var(--color-ice-dim); }
+.project-card h3 { font-size: 1rem; margin-bottom: 0.25rem; color: var(--color-text); }
+.project-card .desc { font-size: 0.85rem; color: var(--color-text-dim); margin-bottom: var(--spacing-sm); }
+.project-card .meta { font-size: 0.75rem; color: var(--color-text-dim); margin-top: auto; }
+.card-details {
+  max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.25s ease, opacity 0.2s ease;
+  margin-top: var(--spacing-sm); border-top: 1px dashed var(--color-border); padding-top: 0.5rem;
+}
+.project-card:hover .card-details, .project-card:focus-within .card-details { max-height: 120px; opacity: 1; }
+.stack-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.5rem; }
+.tag { background: var(--color-bg); border: 1px solid var(--color-border); font-size: 0.65rem; padding: 2px 6px; border-radius: 2px; color: var(--color-ice); }
+.project-links { margin-top: 0.5rem; }
+.project-links a { margin-right: var(--spacing-sm); font-size: 0.8rem; }
+
+/* Config Blocks */
+.config-block { background: var(--color-surface); border: 1px solid var(--color-border); padding: var(--spacing-md); margin: var(--spacing-sm) 0; font-size: 0.85rem; overflow-x: auto; }
+.config-line { margin: 0.2rem 0; }
+.config-key { color: var(--color-ice); }
+.config-val { color: var(--color-success); }
+
+/* Filters */
+.filter-nav { display: flex; gap: var(--spacing-sm); margin-bottom: var(--spacing-lg); flex-wrap: wrap; }
+.filter-btn {
+  background: transparent; border: 1px solid var(--color-border); color: var(--color-text-dim);
+  padding: 0.3rem 0.8rem; font-family: var(--font-mono); cursor: pointer; transition: var(--transition-fast);
+}
+.filter-btn:hover, .filter-btn[aria-pressed="true"] { border-color: var(--color-ice); color: var(--color-ice); background: rgba(125,211,252,0.1); }
+
+/* ASCII Art Containers */
+.ascii-polar { font-size: 0.6rem; line-height: 1.1; opacity: 0.85; color: var(--color-ice-dim); white-space: pre; overflow-x: auto; text-align: center; margin-top: 2rem; }
+.ascii-redbull {
+  font-size: 0.55rem; line-height: 1.05; opacity: 0.22; transform: scale(1.05); pointer-events: none;
+  position: absolute; top: 50%; left: 50%; translate: -50% -50%; z-index: 0; user-select: none;
+  color: rgba(176, 224, 255, 0.65); text-align: center; width: max-content;
+}
+
+/* Contact Form */
+.config-form { display: grid; gap: var(--spacing-md); max-width: 600px; }
+.form-group { display: flex; flex-direction: column; gap: 0.3rem; }
+.form-group label { font-size: 0.85rem; color: var(--color-text-dim); }
+.form-group input, .form-group textarea {
+  background: var(--color-surface); border: 1px solid var(--color-border); color: var(--color-text);
+  font-family: var(--font-mono); padding: var(--spacing-sm); font-size: 0.9rem; resize: vertical;
+}
+.form-group input:focus, .form-group textarea:focus { border-color: var(--color-ice); outline: none; }
+.form-group .error { color: var(--color-error); font-size: 0.75rem; min-height: 1.1em; }
+.submit-btn {
+  background: transparent; border: 1px solid var(--color-ice); color: var(--color-ice); padding: 0.5rem 1.5rem;
+  font-family: var(--font-mono); cursor: pointer; margin-top: var(--spacing-sm); transition: var(--transition-fast);
+}
+.submit-btn:hover { background: var(--color-ice); color: var(--color-bg); }
+
+/* Hidden Env Prompt */
+.env-trigger { position: absolute; clip-path: inset(100%); opacity: 0; pointer-events: none; }
+.env-output { display: none; margin-top: var(--spacing-md); background: var(--color-surface); padding: var(--spacing-md); border: 1px dashed var(--color-accent); font-size: 0.85rem; }
+.env-output.visible { display: block; animation: fade-in 0.3s ease; }
+
+/* Session Animation Header */
+.session-header { opacity: 0; transform: translateY(5px); transition: opacity 0.4s ease, transform 0.4s ease; }
+.session-header.revealed { opacity: 1; transform: translateY(0); }

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Kaesar Wu - Engineering process, stack, and background.">
+  <title>~/kaesar/about.html</title>
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="page-progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="vscode-tabs" aria-label="Primary navigation">
+      <div class="tabs-container">
+        <a href="index.html" class="tab">index.html</a>
+        <a href="about.html" class="tab active" aria-current="page">about.html</a>
+        <a href="projects.html" class="tab">projects.html</a>
+        <a href="contact.html" class="tab">contact.html</a>
+      </div>
+      <button id="palette-trigger" class="palette-btn" aria-label="Open command palette (Ctrl+K)">⌘K</button>
+    </nav>
+    <nav aria-label="Breadcrumb">
+      <div class="breadcrumbs">~/kaesar/<span>about.html</span></div>
+    </nav>
+  </header>
+
+  <main id="main" class="page-load-fade">
+    <section class="about-section" aria-labelledby="bio-heading">
+      <h1 id="bio-heading" class="section-title"><span class="prompt">❯</span> Profile</h1>
+      <p class="bio-text">
+        Student at Macleans College (Auckland, NZ) with a focus on systems-level frontend architecture and accessible interfaces. Previously built foundational technical literacy at Bucklands Beach Intermediate. Currently contributing technical reporting as a Junior Journalist for Eastern Times, bridging local storytelling with structured data analysis.
+      </p>
+      <div class="config-block">
+        <div class="config-line"><span class="prompt">$</span> <span class="config-key">primary_env:</span> <span class="config-val">Visual Studio Code</span></div>
+        <div class="config-line"><span class="prompt">$</span> <span class="config-key">focus:</span> <span class="config-val">web performance, semantic markup, dev workflows</span></div>
+        <div class="config-line"><span class="prompt">$</span> <span class="config-key">location:</span> <span class="config-val">Auckland, New Zealand</span></div>
+      </div>
+    </section>
+
+    <section class="stack-section" aria-labelledby="stack-heading">
+      <h2 id="stack-heading" class="section-title"><span class="prompt">❯</span> Tech Stack</h2>
+      <div class="config-block">
+        <div class="config-line"><span class="config-key">frontend:</span> [html5, css3, vanilla_js, accessibility]</div>
+        <div class="config-line"><span class="config-key">backend:</span> [node.js, express, python]</div>
+        <div class="config-line"><span class="config-key">data:</span> [sqlite, json, basic_sql]</div>
+        <div class="config-line"><span class="config-key">devops:</span> [git, github_actions, terminal]</div>
+      </div>
+    </section>
+
+    <section class="beyond-section" aria-labelledby="beyond-heading">
+      <h2 id="beyond-heading" class="section-title"><span class="prompt">❯</span> Beyond Code</h2>
+      <p>Outside of tech, I am an avid table tennis player, wielding a Butterfly Timo Boll CAF with Hurricane III Forehand and Vega Asia Backhand rubbers. I also have a deep fascination with physics, particularly quantum mechanics, which fuels my curiosity about the fundamental nature of reality.</p>
+      <p> Oh! And I am the biggest Max Verstappen Fan Ever! LIKE EVER </p>
+      
+      <!-- Easter Egg 3 Trigger -->
+      <input type="text" class="env-trigger" id="env-input" placeholder="hidden" aria-hidden="true">
+      <div class="env-output" id="env-output" aria-live="polite"></div>
+
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-meta">
+      <p><span class="prompt">$</span> Built with vanilla HTML/CSS/JS • Zero dependencies</p>
+      <p class="footer-year" aria-label="Copyright year">© <time datetime="2026">2026</time> Kaesar Wu</p>
+      <span class="easter-footer" aria-hidden="true">/* F1: Polar bear prefers icy terminals */</span>
+    </div>
+  </footer>
+
+  <dialog id="command-palette" class="palette-modal" aria-label="Command palette" aria-modal="true">
+    <div class="palette-header"><span class="prompt">❯</span> Route to page or section...</div>
+    <ul id="palette-results" role="listbox" aria-live="polite"></ul>
+  </dialog>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
