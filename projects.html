@@ -27,7 +27,10 @@
         <a href="projects.html" class="tab active" aria-current="page">projects.html</a>
         <a href="contact.html" class="tab">contact.html</a>
       </div>
-      <button id="palette-trigger" class="palette-btn" aria-label="Open command palette (Ctrl+K)">⌘K</button>
+      <div class="header-actions">
+        <button id="settings-trigger" class="palette-btn settings-btn" aria-label="Open settings">⚙</button>
+        <button id="palette-trigger" class="palette-btn" aria-label="Open command palette (Ctrl+K)">⌘K</button>
+      </div>
     </nav>
     <nav aria-label="Breadcrumb">
       <div class="breadcrumbs">~/kaesar/<span>projects.html</span></div>
@@ -66,11 +69,11 @@
     </pre>
 
     <section class="project-archive" aria-labelledby="archive-heading">
-      <h1 id="archive-heading" class="section-title"><span class="prompt">❯</span> Coming Soon</h1>
+      <h1 id="archive-heading" class="section-title"><span class="prompt">❯</span> <span data-i18n="comingSoonTitle">Coming Soon</span></h1>
       
       <div class="coming-soon-message">
-        <p>🚧 Projects are currently under construction. Check back soon for an updated portfolio! 🚧</p>
-        <p class="desc">In the meantime, feel free to explore my other pages or reach out via the contact form.</p>
+        <p data-i18n="comingSoonDesc">🚧 Projects are currently under construction. Check back soon for an updated portfolio! 🚧</p>
+        <p class="desc" data-i18n="comingSoonRemind">In the meantime, feel free to explore my other pages or reach out via the contact form.</p>
       </div>
     </section>
   </main>
@@ -88,8 +91,25 @@
   </footer>
 
   <dialog id="command-palette" class="palette-modal" aria-label="Command palette" aria-modal="true">
-    <div class="palette-header"><span class="prompt">❯</span> Route to page or section...</div>
+    <div class="palette-header"><span class="prompt">❯</span> <span data-i18n="paletteHeader">Route to page or section...</span></div>
     <ul id="palette-results" role="listbox" aria-live="polite"></ul>
+  </dialog>
+
+  <dialog id="settings-dialog" class="settings-modal" aria-label="Settings" aria-modal="true">
+    <div class="settings-header"><span class="prompt">❯</span> <span data-i18n="settingsTitle">Settings</span></div>
+    <div class="settings-body">
+      <p data-i18n="settingsDescription">Choose your preferred display language.</p>
+      <div class="settings-item">
+        <label for="language-select" data-i18n="languageLabel">Language</label>
+        <select id="language-select" name="language">
+          <option value="en" data-i18n="languageEnglish">English</option>
+          <option value="zh" data-i18n="languageChinese">中文</option>
+        </select>
+      </div>
+    </div>
+    <div class="settings-actions">
+      <button type="button" id="settings-close" class="palette-btn"><span data-i18n="closeButton">Close</span></button>
+    </div>
   </dialog>
 
   <script src="assets/js/main.js" defer></script>

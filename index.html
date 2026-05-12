@@ -27,7 +27,10 @@
         <a href="projects.html" class="tab">projects.html</a>
         <a href="contact.html" class="tab">contact.html</a>
       </div>
-      <button id="palette-trigger" class="palette-btn" aria-label="Open command palette (Ctrl+K)">⌘K</button>
+      <div class="header-actions">
+        <button id="settings-trigger" class="palette-btn settings-btn" aria-label="Open settings">⚙</button>
+        <button id="palette-trigger" class="palette-btn" aria-label="Open command palette (Ctrl+K)">⌘K</button>
+      </div>
     </nav>
     <nav aria-label="Breadcrumb">
       <div class="breadcrumbs">~/kaesar/<span>index.html</span></div>
@@ -37,8 +40,8 @@
   <main id="main" class="page-load-fade">
     <section class="hero" aria-labelledby="hero-heading">
       <h1 id="hero-heading" class="decode-hover" data-text="Kaesar Wu">Kaesar Wu</h1>
-      <p class="hero-sub">Student @ Macleans College • Eastern Times Junior Journalist • Web Developer • Professionally Unemployed</p>
-      <p class="status-line"><span class="prompt">❯</span> [✓] Available for collaborations</p>
+      <p class="hero-sub" data-i18n="heroSub">Student @ Macleans College • Eastern Times Junior Journalist • Web Developer • Professionally Unemployed</p>
+      <p class="status-line"><span class="prompt">❯</span> <span data-i18n="heroStatus">[✓] Available for collaborations</span></p>
       
       <div class="terminal-greeting" aria-live="polite">
         <pre><code><span class="prompt">$</span> <span id="typing-text"></span><span class="cursor" aria-hidden="true">_</span></code></pre>
@@ -46,7 +49,7 @@
     </section>
 
     <section class="quick-nav" aria-labelledby="nav-heading">
-      <h2 id="nav-heading" class="section-title"><span class="prompt">❯</span> Pinned Directories</h2>
+      <h2 id="nav-heading" class="section-title"><span class="prompt">❯</span> <span data-i18n="pinnedDirectories">Pinned Directories</span></h2>
       <ul class="dir-grid" role="list">
         <li class="dir-item"><a href="about.html" class="dir-link decode-hover" data-text="📁 ~/about/">📁 ~/about/</a></li>
         <li class="dir-item"><a href="projects.html" class="dir-link decode-hover" data-text="📁 ~/projects/">📁 ~/projects/</a></li>
@@ -56,19 +59,19 @@
     </section>
 
     <section class="focus-areas" aria-labelledby="focus-heading">
-      <h2 id="focus-heading" class="section-title"><span class="prompt">❯</span> Current Focus</h2>
+      <h2 id="focus-heading" class="section-title"><span class="prompt">❯</span> <span data-i18n="currentFocus">Current Focus</span></h2>
       <div class="grid-layout">
-        <article class="focus-item decode-hover" data-text="→ Frontend Architecture & Performance">→ Frontend Architecture & Performance</article>
-        <article class="focus-item decode-hover" data-text="→ Technical Writing & Journalism">→ Technical Writing & Journalism</article>
-        <article class="focus-item decode-hover" data-text="→ Accessible UI Systems">→ Accessible UI Systems</article>
-        <article class="focus-item decode-hover" data-text="→ Local Dev Environments">→ Local Dev Environments</article>
+        <article class="focus-item decode-hover" data-text="→ Frontend Architecture & Performance"><span data-i18n="focus1">→ Frontend Architecture & Performance</span></article>
+        <article class="focus-item decode-hover" data-text="→ Technical Writing & Journalism"><span data-i18n="focus2">→ Technical Writing & Journalism</span></article>
+        <article class="focus-item decode-hover" data-text="→ Accessible UI Systems"><span data-i18n="focus3">→ Accessible UI Systems</span></article>
+        <article class="focus-item decode-hover" data-text="→ Local Dev Environments"><span data-i18n="focus4">→ Local Dev Environments</span></article>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="footer-meta">
-      <p><span class="prompt">$</span> Built with vanilla HTML/CSS/JS • Zero dependencies</p>
+      <p><span class="prompt">$</span> <span data-i18n="footerText">Built with vanilla HTML/CSS/JS • Zero dependencies</span></p>
       <p class="footer-year" aria-label="Copyright year">© <time datetime="2026">2026</time> Kaesar Wu</p>
       <a href="https://github.com/kaesarwudev-ux/Portfolio" class="github-link" aria-label="View source on GitHub">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -80,9 +83,26 @@
 
   <dialog id="command-palette" class="palette-modal" aria-label="Command palette" aria-modal="true">
     <div class="palette-header">
-      <span class="prompt">❯</span> Route to page or section...
+      <span class="prompt">❯</span> <span data-i18n="paletteHeader">Route to page or section...</span>
     </div>
     <ul id="palette-results" role="listbox" aria-live="polite"></ul>
+  </dialog>
+
+  <dialog id="settings-dialog" class="settings-modal" aria-label="Settings" aria-modal="true">
+    <div class="settings-header"><span class="prompt">❯</span> <span data-i18n="settingsTitle">Settings</span></div>
+    <div class="settings-body">
+      <p data-i18n="settingsDescription">Choose your preferred display language.</p>
+      <div class="settings-item">
+        <label for="language-select" data-i18n="languageLabel">Language</label>
+        <select id="language-select" name="language">
+          <option value="en" data-i18n="languageEnglish">English</option>
+          <option value="zh" data-i18n="languageChinese">中文</option>
+        </select>
+      </div>
+    </div>
+    <div class="settings-actions">
+      <button type="button" id="settings-close" class="palette-btn"><span data-i18n="closeButton">Close</span></button>
+    </div>
   </dialog>
 
   <script src="assets/js/main.js" defer></script>

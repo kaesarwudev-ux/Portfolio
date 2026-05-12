@@ -27,7 +27,10 @@
         <a href="projects.html" class="tab">projects.html</a>
         <a href="contact.html" class="tab">contact.html</a>
       </div>
-      <button id="palette-trigger" class="palette-btn" aria-label="Open command palette (Ctrl+K)">⌘K</button>
+      <div class="header-actions">
+        <button id="settings-trigger" class="palette-btn settings-btn" aria-label="Open settings">⚙</button>
+        <button id="palette-trigger" class="palette-btn" aria-label="Open command palette (Ctrl+K)">⌘K</button>
+      </div>
     </nav>
     <nav aria-label="Breadcrumb">
       <div class="breadcrumbs">~/kaesar/<span>about.html</span></div>
@@ -36,8 +39,8 @@
 
   <main id="main" class="page-load-fade">
     <section class="about-section" aria-labelledby="bio-heading">
-      <h1 id="bio-heading" class="section-title"><span class="prompt">❯</span> Profile</h1>
-      <p class="bio-text">
+      <h1 id="bio-heading" class="section-title"><span class="prompt">❯</span> <span data-i18n="aboutTitle">Profile</span></h1>
+      <p class="bio-text" data-i18n="aboutBio">
         Student at Macleans College (Auckland, NZ) with a focus on systems-level frontend architecture and accessible interfaces. Previously built foundational technical literacy at Bucklands Beach Intermediate. Currently contributing technical reporting as a Junior Journalist for Eastern Times, bridging local storytelling with structured data analysis.
       </p>
       <div class="config-block">
@@ -48,7 +51,7 @@
     </section>
 
     <section class="stack-section" aria-labelledby="stack-heading">
-      <h2 id="stack-heading" class="section-title"><span class="prompt">❯</span> Tech Stack</h2>
+      <h2 id="stack-heading" class="section-title"><span class="prompt">❯</span> <span data-i18n="stackTitle">Tech Stack</span></h2>
       <div class="config-block">
         <div class="config-line"><span class="config-key">frontend:</span> [html5, css3, vanilla_js, accessibility]</div>
         <div class="config-line"><span class="config-key">backend:</span> [node.js, express, python]</div>
@@ -58,8 +61,8 @@
     </section>
 
     <section class="beyond-section" aria-labelledby="beyond-heading">
-      <h2 id="beyond-heading" class="section-title"><span class="prompt">❯</span> Beyond Code</h2>
-      <p>Outside of tech, I am an avid table tennis player, wielding a Butterfly Timo Boll CAF with Hurricane III Forehand and Vega Asia Backhand rubbers. I also have a deep fascination with physics, particularly quantum mechanics, which fuels my curiosity about the fundamental nature of reality.</p>
+      <h2 id="beyond-heading" class="section-title"><span class="prompt">❯</span> <span data-i18n="beyondTitle">Beyond Code</span></h2>
+      <p data-i18n="beyondText">Outside of tech, I am an avid table tennis player, wielding a Butterfly Timo Boll CAF with Hurricane III Forehand and Vega Asia Backhand rubbers. I also have a deep fascination with physics, particularly quantum mechanics, which fuels my curiosity about the fundamental nature of reality.</p>
       <p> Oh! And I am the biggest Max Verstappen Fan Ever! LIKE EVER </p>
       
       <!-- Easter Egg 3 Trigger -->
@@ -82,8 +85,25 @@
   </footer>
 
   <dialog id="command-palette" class="palette-modal" aria-label="Command palette" aria-modal="true">
-    <div class="palette-header"><span class="prompt">❯</span> Route to page or section...</div>
+    <div class="palette-header"><span class="prompt">❯</span> <span data-i18n="paletteHeader">Route to page or section...</span></div>
     <ul id="palette-results" role="listbox" aria-live="polite"></ul>
+  </dialog>
+
+  <dialog id="settings-dialog" class="settings-modal" aria-label="Settings" aria-modal="true">
+    <div class="settings-header"><span class="prompt">❯</span> <span data-i18n="settingsTitle">Settings</span></div>
+    <div class="settings-body">
+      <p data-i18n="settingsDescription">Choose your preferred display language.</p>
+      <div class="settings-item">
+        <label for="language-select" data-i18n="languageLabel">Language</label>
+        <select id="language-select" name="language">
+          <option value="en" data-i18n="languageEnglish">English</option>
+          <option value="zh" data-i18n="languageChinese">中文</option>
+        </select>
+      </div>
+    </div>
+    <div class="settings-actions">
+      <button type="button" id="settings-close" class="palette-btn"><span data-i18n="closeButton">Close</span></button>
+    </div>
   </dialog>
 
   <script src="assets/js/main.js" defer></script>
