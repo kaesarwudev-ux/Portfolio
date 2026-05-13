@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
       aboutBio: 'Student at Macleans College (Auckland, NZ) with a focus on systems-level frontend architecture and accessible interfaces. Previously built foundational technical literacy at Bucklands Beach Intermediate. Currently contributing technical reporting as a Junior Journalist for Eastern Times, bridging local storytelling with structured data analysis.',
       stackTitle: 'Tech Stack',
       beyondTitle: 'Beyond Code',
-      beyondText: 'Outside of tech, I am an avid table tennis player, wielding a Butterfly Timo Boll CAF with Hurricane III Forehand and Vega Asia Backhand rubbers. I also have a deep fascination with physics, particularly quantum mechanics, which fuels my curiosity about the fundamental nature of reality.',
+      beyondText: 'I like to play table tennis and for anyone wondering I use Butterfly Timo Boll CAF with Hurricane III Forehand and Vega Asia Backhand rubbers. I also have a deep fascination with physics, particularly quantum mechanics for some random unemployed reason.',
       comingSoonTitle: 'Coming Soon',
       comingSoonDesc: '🚧 Projects are currently under construction. Check back soon for an updated portfolio! 🚧',
       comingSoonRemind: 'In the meantime, feel free to explore my other pages or reach out via the contact form.',
