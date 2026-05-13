@@ -68,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const key = el.dataset.i18n;
       if (translations[lang]?.[key]) el.textContent = translations[lang][key];
     });
-    if (languageSelect) languageSelect.value = lang;
   };
 
   translatePage('en');
