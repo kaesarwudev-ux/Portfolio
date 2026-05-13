@@ -47,38 +47,52 @@
     <section class="gallery-section" aria-labelledby="gallery-layout-heading">
       <h2 id="gallery-layout-heading" class="section-title"><span class="prompt">❯</span> Image Explorations</h2>
       <div class="gallery-grid" role="list">
-        <article class="gallery-card" role="listitem">
+        <article class="gallery-card" role="listitem" data-index="0">
           <img src="assets/img/maxverstappenbookmarkfront.png" alt="Max Verstappen bookmark front design">
           <div class="gallery-card-body">
             <h3 class="gallery-card-title">Bookmark Front</h3>
             <p class="gallery-card-caption">A bookmark I made for english class with the iconic Sid Verstappen. Matte Laminate</p>
           </div>
         </article>
-        <article class="gallery-card" role="listitem">
+        <article class="gallery-card" role="listitem" data-index="1">
           <img src="assets/img/maxverstappenbookmarkback.png" alt="Max Verstappen bookmark back design">
           <div class="gallery-card-body">
             <h3 class="gallery-card-title">Bookmark Back</h3>
             <p class="gallery-card-caption">The back side of the bookmark that features a Oracle Red Bull Racing Rb19 Lineart.</p>
           </div>
         </article>
-        <article class="gallery-card" role="listitem">
+        <article class="gallery-card" role="listitem" data-index="2">
           <img src="assets/img/sidverstappenplush.png" alt="Plushie watching Max Verstappen on my Thinkpad">
           <div class="gallery-card-body">
             <h3 class="gallery-card-title">Sid Verstappen Plush</h3>
             <p class="gallery-card-caption">MY SID VERSTAPPEN PLUSHHHH</p>
           </div>
         </article>
-        <article class="gallery-card" role="listitem">
+        <article class="gallery-card" role="listitem" data-index="3">
           <img src="assets/img/sidverstappenplushiewatchingmaxverstappen.png" alt="Plushie watching Max Verstappen on my Thinkpad">
           <div class="gallery-card-body">
             <h3 class="gallery-card-title">Sid Verstappen Watching Maxie</h3>
             <p class="gallery-card-caption">Sid Verstappen watching himself quali in Miami GP 2026 (Qualid 3rd)</p>
           </div>
         </article>
-        </article>
       </div>
     </section>
   </main>
+
+  <div id="gallery-lightbox" class="lightbox-modal" aria-label="Gallery lightbox">
+    <div class="lightbox-backdrop"></div>
+    <button class="lightbox-close" aria-label="Close lightbox">×</button>
+    <button class="lightbox-prev" aria-label="Previous image">‹</button>
+    <button class="lightbox-next" aria-label="Next image">›</button>
+    <div class="lightbox-container">
+      <div class="lightbox-viewer">
+        <img id="lightbox-image" src="" alt="">
+      </div>
+      <div class="lightbox-caption-box">
+        <div id="lightbox-caption"></div>
+      </div>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <div class="footer-meta">

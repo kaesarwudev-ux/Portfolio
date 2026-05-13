@@ -314,4 +314,80 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // 10. Gallery Lightbox
+  const lightbox = $('#gallery-lightbox');
+  const lightboxBackdrop = $('.lightbox-backdrop');
+  const lightboxImage = $('#lightbox-image');
+  const lightboxCaption = $('#lightbox-caption');
+  const lightboxClose = $('.lightbox-close');
+  const lightboxPrev = $('.lightbox-prev');
+  const lightboxNext = $('.lightbox-next');
+  let currentIndex = 0;
+  let galleryItems = [];
+
+  if (lightbox) {
+    const galleryCards = $$('.gallery-card');
+    galleryItems = Array.from(galleryCards).map(card => ({
+      img: card.querySelector('img').src,
+      alt: card.querySelector('img').alt,
+      title: card.querySelector('.gallery-card-title').textContent,
+      caption: card.querySelector('.gallery-card-caption').textContent
+    }));
+
+    galleryCards.forEach((card, index) => {
+      card.addEventListener('click', () => {
+        currentIndex = index;
+        showLightbox();
+      });
+    });
+
+    const showLightbox = () => {
+      const item = galleryItems[currentIndex];
+      lightboxImage.src = item.img;
+      lightboxImage.alt = item.alt;
+      lightboxCaption.textContent = `${item.title}: ${item.caption}`;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden'; // Prevent scroll
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    const prevImage = () => {
+      currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+      updateLightboxImage();
+    };
+
+    const nextImage = () => {
+      currentIndex = (currentIndex + 1) % galleryItems.length;
+      updateLightboxImage();
+    };
+
+    const updateLightboxImage = () => {
+      const item = galleryItems[currentIndex];
+      lightboxImage.style.transform = 'scale(0.9)';
+      setTimeout(() => {
+        lightboxImage.src = item.img;
+        lightboxImage.alt = item.alt;
+        lightboxCaption.textContent = `${item.title}: ${item.caption}`;
+        lightboxImage.style.transform = 'scale(1)';
+      }, 150);
+    };
+
+    lightboxClose?.addEventListener('click', closeLightbox);
+    lightboxBackdrop?.addEventListener('click', closeLightbox);
+    lightboxPrev?.addEventListener('click', prevImage);
+    lightboxNext?.addEventListener('click', nextImage);
+
+    document.addEventListener('keydown', e => {
+      if (lightbox.classList.contains('open')) {
+        if (e.key === 'Escape') closeLightbox();
+        else if (e.key === 'ArrowLeft') prevImage();
+        else if (e.key === 'ArrowRight') nextImage();
+      }
+    });
+  }
 });
