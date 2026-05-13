@@ -97,7 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
     { name: 'Home', path: 'index.html', anchor: '#hero-heading' },
     { name: 'About', path: 'about.html', anchor: '#bio-heading' },
     { name: 'Projects', path: 'projects.html', anchor: '#archive-heading' },
-    { name: 'Contact', path: 'contact.html', anchor: '#contact-heading' }
+    { name: 'Gallery', path: 'gallery.html', anchor: '#gallery-heading' },
+    { name: 'Contact', path: 'contact.html', anchor: '#contact-heading' },
+    { name: 'Settings', action: 'settings' }
   ];
 
   const translatePage = (lang) => {
@@ -112,9 +114,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
   translatePage(currentLanguage);
 
-  const openSettings = () => settingsDialog?.showModal();
+  const openSettings = () => {
+    closePalette();
+    settingsDialog?.showModal();
+  };
   const closeSettings = () => settingsDialog?.close();
-  const openPalette = () => { if (palette) { palette.showModal(); results.innerHTML = ''; routes.forEach(r => { results.innerHTML += `<li class="palette-item" tabindex="0" data-path="${r.path}">${r.name} <span class="path">${r.path}</span></li>`; }); results.querySelector('.palette-item')?.focus(); } };
+  const openPalette = () => {
+    if (palette) {
+      palette.showModal();
+      results.innerHTML = '';
+      routes.forEach(r => {
+        if (r.action) {
+          results.innerHTML += `<li class="palette-item" tabindex="0" data-action="${r.action}">${r.name}</li>`;
+        } else {
+          results.innerHTML += `<li class="palette-item" tabindex="0" data-path="${r.path}">${r.name} <span class="path">${r.path}</span></li>`;
+        }
+      });
+      results.querySelector('.palette-item')?.focus();
+    }
+  };
   const closePalette = () => { if (palette) palette.close(); };
   if (settingsTrigger) settingsTrigger.addEventListener('click', openSettings);
   if (settingsClose) settingsClose.addEventListener('click', closeSettings);
@@ -132,7 +150,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   if(results) {
-    results.addEventListener('click', e => { if(e.target.dataset.path) window.location.href = e.target.dataset.path; });
+    results.addEventListener('click', e => {
+      const item = e.target.closest('.palette-item');
+      if (!item) return;
+      if (item.dataset.action === 'settings') openSettings();
+      else if (item.dataset.path) window.location.href = item.dataset.path;
+    });
     results.addEventListener('keydown', e => {
       const items = [...results.querySelectorAll('.palette-item')];
       const focusIdx = items.findIndex(i => i === document.activeElement);
