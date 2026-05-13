@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const palette = $('#command-palette');
   const paletteBtn = $('#palette-trigger');
   const results = $('#palette-results');
+  let paletteInput = $('#palette-input');
   const routes = [
     { name: 'Home', path: 'index.html', anchor: '#hero-heading' },
     { name: 'About', path: 'about.html', anchor: '#bio-heading' },
@@ -114,6 +115,55 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
   translatePage(currentLanguage);
 
+  const buildPaletteInput = () => {
+    if (!palette || paletteInput) return;
+    const header = palette.querySelector('.palette-header');
+    if (!header) return;
+    paletteInput = document.createElement('input');
+    paletteInput.id = 'palette-input';
+    paletteInput.className = 'palette-input';
+    paletteInput.type = 'text';
+    paletteInput.autocomplete = 'off';
+    paletteInput.placeholder = 'Type a page name...';
+    paletteInput.setAttribute('aria-label', 'Search pages');
+    paletteInput.addEventListener('input', () => renderPaletteItems(paletteInput.value));
+    paletteInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const first = results.querySelector('.palette-item:not([hidden])');
+        if (first) first.click();
+      }
+      if (e.key === 'ArrowDown') {
+        results.querySelector('.palette-item:not([hidden])')?.focus();
+        e.preventDefault();
+      }
+    });
+    header.appendChild(paletteInput);
+  };
+
+  const renderPaletteItems = (filter = '') => {
+    if (!results) return;
+    const normalized = filter.trim().toLowerCase();
+    results.innerHTML = '';
+    const matches = routes.filter(route => {
+      const label = route.name.toLowerCase();
+      const path = route.path ? route.path.toLowerCase() : '';
+      return normalized === '' || label.includes(normalized) || path.includes(normalized);
+    });
+
+    if (!matches.length) {
+      results.innerHTML = '<li class="palette-empty">No matching pages found.</li>';
+      return;
+    }
+
+    matches.forEach(route => {
+      if (route.action) {
+        results.innerHTML += `<li class="palette-item" tabindex="0" data-action="${route.action}">${route.name}</li>`;
+      } else {
+        results.innerHTML += `<li class="palette-item" tabindex="0" data-path="${route.path}">${route.name} <span class="path">${route.path}</span></li>`;
+      }
+    });
+  };
+
   const openSettings = () => {
     closePalette();
     settingsDialog?.showModal();
@@ -121,16 +171,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeSettings = () => settingsDialog?.close();
   const openPalette = () => {
     if (palette) {
+      buildPaletteInput();
+      renderPaletteItems('');
       palette.showModal();
-      results.innerHTML = '';
-      routes.forEach(r => {
-        if (r.action) {
-          results.innerHTML += `<li class="palette-item" tabindex="0" data-action="${r.action}">${r.name}</li>`;
-        } else {
-          results.innerHTML += `<li class="palette-item" tabindex="0" data-path="${r.path}">${r.name} <span class="path">${r.path}</span></li>`;
-        }
-      });
-      results.querySelector('.palette-item')?.focus();
+      paletteInput?.focus();
     }
   };
   const closePalette = () => { if (palette) palette.close(); };
