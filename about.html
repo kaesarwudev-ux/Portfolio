@@ -29,7 +29,6 @@
         <a href="contact.html" class="tab">contact.html</a>
       </div>
       <div class="header-actions">
-        <button id="settings-trigger" class="palette-btn settings-btn" aria-label="Open settings">⚙</button>
         <button id="palette-trigger" class="palette-btn" aria-label="Open command palette (Ctrl+K)">⌘K</button>
       </div>
     </nav>
@@ -90,22 +89,6 @@
     <ul id="palette-results" role="listbox" aria-live="polite"></ul>
   </dialog>
 
-  <dialog id="settings-dialog" class="settings-modal" aria-label="Settings" aria-modal="true">
-    <div class="settings-header"><span class="prompt">❯</span> <span data-i18n="settingsTitle">Settings</span></div>
-    <div class="settings-body">
-      <p data-i18n="settingsDescription">Choose your preferred display language.</p>
-      <div class="settings-item">
-        <label for="language-select" data-i18n="languageLabel">Language</label>
-        <select id="language-select" name="language">
-          <option value="en" data-i18n="languageEnglish">English</option>
-          <option value="zh" data-i18n="languageChinese">中文</option>
-        </select>
-      </div>
-    </div>
-    <div class="settings-actions">
-      <button type="button" id="settings-close" class="palette-btn"><span data-i18n="closeButton">Close</span></button>
-    </div>
-  </dialog>
 
   <script src="assets/js/main.js" defer></script>
 </body>
