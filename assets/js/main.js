@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       settingsTitle: 'Settings',
       closeButton: 'Close',
       paletteHeader: 'Route to page or section...',
-      heroSub: 'Student @ Macleans College • Eastern Times Junior Journalist • Web Developer • Professionally Unemployed',
+      heroSub: 'Student at Macleans College • Eastern Times Junior Journalist • Professionally Unemployed',
       heroStatus: '[✓] Available for collaborations',
       pinnedDirectories: 'Pinned Directories',
       currentFocus: 'Current Focus',
