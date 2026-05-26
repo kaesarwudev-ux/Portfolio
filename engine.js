@@ -52,7 +52,6 @@ function createDisplacementMapImage(width, height, surfaceType, bezelWidth, ior,
 
   for (let py = 0; py < height; py++) {
     for (let px = 0; px < width; px++) {
-      // Distance from Top/Bottom and Left/Right edges
       const distTop = py;
       const distBottom = height - 0 - py;
       const distFromVerticalBorder = Math.min(distTop, distBottom);
