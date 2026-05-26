@@ -251,6 +251,24 @@ p {
   transform: translateX(12px);
 }
 
+@media (max-width: 768px) {
+  [data-theme="light"] .apple-switch:not(.dragging) .apple-switch-knob {
+    transform: translateX(20px);
+  }
+
+  .apple-switch.dragging .apple-switch-knob,
+  .apple-switch:active .apple-switch-knob {
+    width: 34px;
+    height: 30px;
+    top: -1px;
+    border-radius: 15px;
+  }
+
+  [data-theme="light"] .apple-switch:not(.dragging):active .apple-switch-knob {
+    transform: translateX(10px);
+  }
+}
+
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -260,6 +278,61 @@ p {
 @media (max-width: 768px) {
   .grid-2 {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .nav-wrapper {
+    top: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+  }
+
+  nav {
+    padding: 0.75rem 1.2rem;
+    border-radius: 24px;
+  }
+
+  nav .links {
+    gap: 1rem;
+  }
+
+  nav .links a {
+    font-size: 0.82rem;
+  }
+
+  .apple-switch {
+    width: 48px;
+    height: 28px;
+  }
+
+  .apple-switch-knob {
+    width: 24px;
+    height: 24px;
+  }
+
+  main {
+    padding: 5.5rem 1rem 3rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 8vw, 4.5rem);
+  }
+
+  .about-section {
+    padding: 1.2rem;
+  }
+
+  .liquid-glass {
+    border-radius: 20px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
   }
 }
 
