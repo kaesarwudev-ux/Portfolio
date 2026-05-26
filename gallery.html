@@ -1,153 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Visual gallery of snapshot artwork and favourite builds.">
-  <title>~/kaesar/gallery.html</title>
-  <link rel="stylesheet" href="assets/css/base.css">
-  <link rel="stylesheet" href="assets/css/layout.css">
-  <link rel="stylesheet" href="assets/css/components.css">
-  
-  <!-- Vercel Web Analytics -->
-  <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-  </script>
-  <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery — Kaesar Wu</title>
+    <meta name="description" content="Kaesar Wu's visual portfolio — art, F1 collections, and photography.">
+    <script src="theme-init.js"></script>
+    <script src="theme.js" defer></script>
+    <script src="engine.js" defer></script>
+    <script src="specular.js" defer></script>
+    <script src="lightbox.js" defer></script>
+    <script src="init.js" defer></script>
+    <link rel="stylesheet" href="global.css">
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to content</a>
-  <div class="page-progress" aria-hidden="true"></div>
+    
+    <div id="svg-filters-container"></div>
 
-  <header class="site-header">
-    <nav class="vscode-tabs" aria-label="Primary navigation">
-      <div class="tabs-container">
-        <a href="index.html" class="tab">index.html</a>
-        <a href="about.html" class="tab">about.html</a>
-        <a href="projects.html" class="tab">projects.html</a>
-        <a href="gallery.html" class="tab active" aria-current="page">gallery.html</a>
-        <a href="contact.html" class="tab">contact.html</a>
-      </div>
-      <div class="header-actions">
-        <button id="palette-trigger" class="palette-btn" aria-label="Open command palette (Ctrl+K)">⌘K</button>
-      </div>
-    </nav>
-    <nav aria-label="Breadcrumb">
-      <div class="breadcrumbs">~/kaesar/<span>gallery.html</span></div>
-    </nav>
-  </header>
+    <header class="nav-wrapper">
+        <nav class="liquid-glass nav-glass">
+            <a href="index.html" class="logo">Kaesar Wu</a>
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="journalism.html">Journalism</a>
+                <a href="gallery.html" class="active">Gallery</a>
+                <a href="about.html">About</a>
+                <div id="theme-switch" class="apple-switch" title="Toggle theme">
+                    <div class="apple-switch-knob"></div>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-  <main id="main" class="page-load-fade">
-    <!-- Red Bull Watermark -->
-    <pre class="ascii-art ascii-redbull" aria-hidden="true">
-                                                                                                                        
-                                                      #####%%%##%%                                                      
-                                                 #####################%                                                 
-                                               ###########################                                              
-                                            ################################                                            
-                                          ####################################  ##                                      
-    ***###                          #*****#####################################*==+*#                         ###**#    
-   #*----=+*#                  ##**+-------=*################################+-------+*##                   #*=----*    
-    #*=-----+#               #*=--------------*###########################*=-------------+**               #=-----+#    
-      ##*=-=*           #*+++-------------------+#######################+------+*-----------+++*#          #+--*##      
-     #*=--+#         ##*=---------------=+-------=*###################+-------+-----------------=*###       #*=-=*#     
-    #+--*#      #*++==-------------------=---------+################*-------------------------------==+*#     #*--*#    
-    #=-+#    #*+------------------------------------+##############*-------------------------------------+*#    *-=#    
-    #+--+##*+=---------------------------------------*############*=---------------------------------------=++++--=#    
-     #+=-----------------------------------------+=--+############+----=-------=--------------------------------=+#     
-       ##*+*+----------------------------=--------==-=*##########*=--=+=+------+----------------------------+**#*       
-            *--------=------------------+-------------************---=-----=---=+---------------------------+*          
-            *=-------+=---------=-----+-=+**+----------**********=----------+**+===----=----------+=-------=**          
-        **=---------+=+******+++**=----+-=*=----------=-+*******=------------+*--=----+*++++++++*+=----------=*        
-    *+***-----===+=--=*    *+=-=*--==--==-+=-----------+--+***+--=-----------+=-=--==-++=++*     *+--==--------+**+*    
-  **=-+---=---==---+**      *=---+=+=----+*=---=+++**+---+******--=******=--=**-----===---**      **+------------+-=**  
- *=-=------=+*  ***          **+-----=+******************************************+------**           ******+------==-=* 
- *===--=*                       *****      **********************************      *****                    ****+--===* 
-                                              *****************************                                             
-                                                ************************                                                
-                                                    *****************                                                   
-    </pre>
+    <main>
+        <h1>My Gallery</h1>
+        <p>Mostly Max Verstappen Related stuff.</p>
 
-    <section class="hero" aria-labelledby="gallery-heading">
-      <h1 id="gallery-heading" class="decode-hover" data-text="Gallery">Gallery</h1>
-      <p class="hero-sub">A small gallery of my life.</p>
-    </section>
+        <div class="gallery-grid">
+            <div class="liquid-glass interactive-glass gallery-item">
+                <img src="assets/img/maximusverstoppeniaplantdrawing.png" alt="Maximus Verstoppenia Plant Drawing">
+                <div class="gallery-meta mono">Maximus Verstoppenia Drawing</div>
+            </div>
+            <div class="liquid-glass interactive-glass gallery-item">
+                <img src="assets/img/maxverstappenbookmarkfront.png" alt="Max Verstappen Bookmark — Front">
+                <div class="gallery-meta mono">Bookmark Front</div>
+            </div>
+            <div class="liquid-glass interactive-glass gallery-item">
+                <img src="assets/img/maxverstappenbookmarkback.png" alt="Max Verstappen Bookmark — Back">
+                <div class="gallery-meta mono">Bookmark Back</div>
+            </div>
+            <div class="liquid-glass interactive-glass gallery-item">
+                <img src="assets/img/sidverstappenplush.png" alt="Sid Verstappen Plush">
+                <div class="gallery-meta mono">Sid Verstappen Plush</div>
+            </div>
+            <div class="liquid-glass interactive-glass gallery-item">
+                <img src="assets/img/sidverstappenplushiewatchingmaxverstappen.png" alt="Sid Plush watching Max Verstappen race">
+                <div class="gallery-meta mono">Sid Watching Max Race</div>
+            </div>
+            <div class="liquid-glass interactive-glass gallery-item">
+                <img src="assets/img/MaxineVerstappen.jpg" alt="Maxine Verstappen">
+                <div class="gallery-meta mono">My cutie patootie 😘</div>
+            </div>
+        </div>
+    </main>
 
-    <section class="gallery-section" aria-labelledby="gallery-layout-heading">
-      <h2 id="gallery-layout-heading" class="section-title"><span class="prompt">❯</span> Image Explorations</h2>
-      <div class="gallery-grid" role="list">
-        <article class="gallery-card" role="listitem" data-index="0">
-          <img src="assets/img/maxverstappenbookmarkfront.png" alt="Max Verstappen bookmark front design">
-          <div class="gallery-card-body">
-            <h3 class="gallery-card-title">Bookmark Front</h3>
-            <p class="gallery-card-caption">A bookmark I made for english class with the iconic Sid Verstappen. Matte Laminate</p>
-          </div>
-        </article>
-        <article class="gallery-card" role="listitem" data-index="1">
-          <img src="assets/img/maxverstappenbookmarkback.png" alt="Max Verstappen bookmark back design">
-          <div class="gallery-card-body">
-            <h3 class="gallery-card-title">Bookmark Back</h3>
-            <p class="gallery-card-caption">The back side of the bookmark that features a Oracle Red Bull Racing Rb19 Lineart.</p>
-          </div>
-        </article>
-        <article class="gallery-card" role="listitem" data-index="2">
-          <img src="assets/img/sidverstappenplush.png" alt="Plushie watching Max Verstappen on my Thinkpad">
-          <div class="gallery-card-body">
-            <h3 class="gallery-card-title">Sid Verstappen Plush</h3>
-            <p class="gallery-card-caption">MY SID VERSTAPPEN PLUSHHHH</p>
-          </div>
-        </article>
-        <article class="gallery-card" role="listitem" data-index="3">
-          <img src="assets/img/sidverstappenplushiewatchingmaxverstappen.png" alt="Plushie watching Max Verstappen on my Thinkpad">
-          <div class="gallery-card-body">
-            <h3 class="gallery-card-title">Sid Verstappen Watching Maxie</h3>
-            <p class="gallery-card-caption">Sid Verstappen watching himself quali in Miami GP 2026 (Qualid 3rd)</p>
-          </div>
-        </article>
-        <article class="gallery-card" role="listitem" data-index="2">
-          <img src="assets/img/maximusverstoppeniaplantdrawing.png" alt="Maximus Verstoppenia plant drawing">
-          <div class="gallery-card-body">
-            <h3 class="gallery-card-title">Maximus Verstoppenia Plant</h3>
-            <p class="gallery-card-caption">A fantasy plant drawing of the species Maximus Verstoppenia for science class</p>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <div id="gallery-lightbox" class="lightbox-modal" aria-label="Gallery lightbox">
-    <div class="lightbox-backdrop"></div>
-    <button class="lightbox-close" aria-label="Close lightbox">×</button>
-    <button class="lightbox-prev" aria-label="Previous image">‹</button>
-    <button class="lightbox-next" aria-label="Next image">›</button>
-    <div class="lightbox-container">
-      <div class="lightbox-viewer">
-        <img id="lightbox-image" src="" alt="">
-      </div>
-      <div class="lightbox-caption-box">
-        <div id="lightbox-caption"></div>
-      </div>
+    <div id="lightbox">
+        <button class="close-btn" aria-label="Close">&times;</button>
+        <img id="lightbox-img" src="" alt="">
     </div>
-  </div>
 
-  <footer class="site-footer">
-    <div class="footer-meta">
-      <p><span class="prompt">$</span> Built with vanilla HTML/CSS/JS</p>
-      <p class="footer-year" aria-label="Copyright year">© <time datetime="2026">2026</time> Kaesar Wu</p>
-      <a href="https://github.com/kaesarwudev-ux/Portfolio" class="github-link" aria-label="View source on GitHub">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-        </svg>
-      </a>
-    </div>
-  </footer>
-
-  <dialog id="command-palette" class="palette-modal" aria-label="Command palette" aria-modal="true">
-    <div class="palette-header"><span class="prompt">❯</span> <span data-i18n="paletteHeader">Route to page or section...</span></div>
-    <ul id="palette-results" role="listbox" aria-live="polite"></ul>
-  </dialog>
-
-
-  <script src="assets/js/main.js" defer></script>
+    <script src="init.js" defer></script>
 </body>
 </html>
