@@ -1,28 +1,18 @@
 <svg style="position:absolute;width:0;height:0;pointer-events:none" aria-hidden="true">
     <defs>
         <!-- 
-             PHYSICS FIX: 
-             1. Force Red/Blue channels to exactly 0.5 (neutral) via feColorMatrix.
-             2. Scale is dynamically capped in init.js to prevent vertical "mirroring".
+             G channel = Y displacement (top/bottom edges)
+             B channel = X displacement (left/right edges)
+             Map image loaded as blob URL by init.js
         -->
         <filter id="filter-convex" color-interpolation-filters="sRGB">
-            <feImage id="map-convex" href="" result="disp" preserveAspectRatio="none" x="0" y="0" width="100%" height="100%"/>
-            <feColorMatrix in="disp" result="disp-v" type="matrix" 
-                values="0 0 0 0 0.5
-                        0 1 0 0 0
-                        0 0 0 0 0.5
-                        0 0 0 1 0"/>
-            <feDisplacementMap in="SourceGraphic" in2="disp-v" scale="40" xChannelSelector="B" yChannelSelector="G"/>
+            <feImage id="map-convex" href="" xlink:href="" result="disp" preserveAspectRatio="none" x="0" y="0" width="100%" height="100%"/>
+            <feDisplacementMap in="SourceGraphic" in2="disp" scale="30" xChannelSelector="B" yChannelSelector="G"/>
         </filter>
 
         <filter id="filter-lip" color-interpolation-filters="sRGB">
-            <feImage id="map-lip" href="" result="disp" preserveAspectRatio="none" x="0" y="0" width="100%" height="100%"/>
-            <feColorMatrix in="disp" result="disp-v" type="matrix" 
-                values="0 0 0 0 0.5
-                        0 0 0 0 0
-                        0 0 0 0 0.5
-                        0 0 0 1 0"/>
-            <feDisplacementMap in="SourceGraphic" in2="disp-v" scale="25" xChannelSelector="B" yChannelSelector="G"/>
+            <feImage id="map-lip" href="" xlink:href="" result="disp" preserveAspectRatio="none" x="0" y="0" width="100%" height="100%"/>
+            <feDisplacementMap in="SourceGraphic" in2="disp" scale="20" xChannelSelector="B" yChannelSelector="G"/>
         </filter>
     </defs>
 </svg>

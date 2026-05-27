@@ -36,49 +36,16 @@
     }
   })();
 
-  /* ── Displacement maps & filters (waits for DOMContentLoaded) ── */
+  /* ── Adjust displacement scale based on nav height ── */
   document.addEventListener('DOMContentLoaded', function() {
-    var filterContainer = document.getElementById('svg-filters-container');
-    if (filterContainer) {
-      fetch('filters.svg')
-        .then(function(response) { return response.text(); })
-        .then(function(svgText) { filterContainer.innerHTML = svgText; })
-        .catch(function(err) { console.error('Failed to load filters:', err); });
-    }
-
-    try {
-      var convex = createDisplacementMapImage(256, 256, 'convexSquircle', 0.4, 1.5, 75);
-      var lip = createDisplacementMapImage(256, 256, 'lip', 0.5, 1.5, 60);
-
-      var convexImg = document.getElementById('map-convex');
-      if (convexImg) {
-        convexImg.setAttribute('href', convex.dataUrl);
-      }
-
-      var lipImg = document.getElementById('map-lip');
-      if (lipImg) {
-        lipImg.setAttribute('href', lip.dataUrl);
-      }
-
-      var convexFilter = document.querySelector('#filter-convex feDisplacementMap');
-      if (convexFilter) {
-        var scale = 40;
-        var navGlass = document.querySelector('.nav-glass');
-        if (navGlass) {
-          var height = navGlass.offsetHeight;
-          if (height > 0 && height < 120) {
-            scale = Math.min(scale, Math.floor(height * 0.3));
-          }
-        }
-        convexFilter.setAttribute('scale', String(scale));
-      }
-
-      var lipFilter = document.querySelector('#filter-lip feDisplacementMap');
-      if (lipFilter) {
-        lipFilter.setAttribute('scale', '25');
-      }
-    } catch (err) {
-      console.error('Displacement map init failed:', err);
-    }
+    var navGlass = document.querySelector('.nav-glass');
+    if (!navGlass) return;
+    var h = navGlass.offsetHeight;
+    if (h <= 0 || h >= 120) return;
+    var scale = Math.min(14, Math.floor(h * 0.25));
+    var disp = document.getElementById('disp-convex');
+    if (disp) disp.setAttribute('scale', String(scale));
+    var disp2 = document.getElementById('disp-lip');
+    if (disp2) disp2.setAttribute('scale', String(Math.max(4, Math.floor(scale * 1.2))));
   });
 })();

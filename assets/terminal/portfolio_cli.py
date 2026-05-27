@@ -51,7 +51,7 @@ IDENTITY = {
         "Table Tennis 🏓"
     ],
     "portfolio_url": "https://kwdev.vercel.app",  # ✅ CORRECT URL
-    "verstappen_status": "DIE-HARD FAN 🔥🏆🔥 #MaxVerstappen #OrangeArmy",
+    "verstappen_status": "DIE-HARD FAN 🔥🏆🔥 #MaxVerstappen #SIMPLYLOVELY",
     "available": True
 }
 

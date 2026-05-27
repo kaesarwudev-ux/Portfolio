@@ -34,48 +34,55 @@ function computeDisplacementProfile(surfaceFn, numSamples, ior, thickness) {
   return displacements;
 }
 
-function createDisplacementMapImage(width, height, surfaceType, bezelWidth, ior, thickness) {
+function createDisplacementMapCanvas(width, height, surfaceType, bezelX, bezelY, ior, thickness) {
   const canvas = document.createElement('canvas');
   canvas.width = width;
   canvas.height = height;
   const ctx = canvas.getContext('2d');
   const imgData = ctx.createImageData(width, height);
-  const surfaceFn = surfaces[surfaceType] || surfaces.convexSquircle;
-  const numSamples = 128;
+  const surfaceFn = surfaces[surfaceType] || surfaces.convexCircle;
+  const numSamples = 32;
   const profile = computeDisplacementProfile(surfaceFn, numSamples, ior, thickness);
 
   let maxDisp = 0;
   for (let i = 0; i < numSamples; i++) maxDisp = Math.max(maxDisp, Math.abs(profile[i]));
   if (maxDisp === 0) maxDisp = 1;
 
-  const bezelPx = Math.min(width, height) * bezelWidth;
-
   for (let py = 0; py < height; py++) {
     for (let px = 0; px < width; px++) {
       const distTop = py;
-      const distBottom = height - 0 - py;
-      const distFromVerticalBorder = Math.min(distTop, distBottom);
+      const distBottom = height - 1 - py;
+      const distLeft = px;
+      const distRight = width - 1 - px;
+      const distV = Math.min(distTop, distBottom);
+      const distH = Math.min(distLeft, distRight);
 
-      let r = 128;
       let g = 128;
       let b = 128;
 
-      if (distFromVerticalBorder < bezelPx && bezelPx > 0) {
-        const t = distFromVerticalBorder / bezelPx;
+      if (distV < bezelY && bezelY > 0) {
+        const t = distV / bezelY;
         const sampleIdx = Math.min(numSamples - 1, Math.floor(t * (numSamples - 1)));
         const magnitude = profile[sampleIdx] / maxDisp;
-
         const ny = (distTop <= distBottom) ? -1 : 1;
         g = Math.round(128 - ny * magnitude * 127);
       }
 
+      if (distH < bezelX && bezelX > 0) {
+        const t = distH / bezelX;
+        const sampleIdx = Math.min(numSamples - 1, Math.floor(t * (numSamples - 1)));
+        const magnitude = profile[sampleIdx] / maxDisp;
+        const nx = (distLeft <= distRight) ? -1 : 1;
+        b = Math.round(128 - nx * magnitude * 127);
+      }
+
       const i = (py * width + px) * 4;
-      imgData.data[i] = Math.max(0, Math.min(255, r));
+      imgData.data[i] = 128;
       imgData.data[i + 1] = Math.max(0, Math.min(255, g));
       imgData.data[i + 2] = Math.max(0, Math.min(255, b));
       imgData.data[i + 3] = 255;
     }
   }
   ctx.putImageData(imgData, 0, 0);
-  return { dataUrl: canvas.toDataURL('image/png', 1.0), maxDisplacement: maxDisp };
+  return canvas;
 }
