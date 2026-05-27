@@ -95,13 +95,13 @@ nav .logo {
   color: var(--text-1);
 }
 
-nav .links {
+.links {
   display: flex;
   gap: 1.8rem;
   align-items: center;
 }
 
-nav .links a {
+.links a {
   text-decoration: none;
   color: var(--text-2);
   font-size: 0.9rem;
@@ -109,8 +109,8 @@ nav .links a {
   transition: color 0.25s ease;
 }
 
-nav .links a:hover,
-nav .links a.active {
+.links a:hover,
+.links a.active {
   color: var(--text-1);
 }
 
@@ -262,28 +262,17 @@ p {
   gap: 1.5rem;
 }
 
+/* ============================================
+   MOBILE ONLY — nothing above this line changes
+   ============================================ */
 @media (max-width: 768px) {
-  [data-theme="light"] .apple-switch:not(.dragging) .apple-switch-knob {
-    transform: translateX(20px);
-  }
-
-  .apple-switch.dragging .apple-switch-knob,
-  .apple-switch:active .apple-switch-knob {
-    width: 34px;
-    height: 30px;
-    top: -1px;
-    border-radius: 15px;
-  }
-
-  [data-theme="light"] .apple-switch:not(.dragging):active .apple-switch-knob {
-    transform: translateX(10px);
-  }
 
   .grid-2 {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
 
+  /* Nav bar: compact, edge-to-edge */
   .nav-wrapper {
     top: 0;
     left: 0;
@@ -291,18 +280,19 @@ p {
   }
 
   nav {
-    padding: 0.6rem 0.85rem;
-    border-radius: 14px;
+    padding: 0.5rem 0.65rem;
+    border-radius: 12px;
     max-width: 100%;
   }
 
   nav .logo {
-    font-size: 1rem;
-    flex: 1;
+    font-size: 0.95rem;
   }
 
+  /* Hamburger button */
   .mobile-nav-toggle {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 36px;
@@ -314,39 +304,140 @@ p {
     color: var(--text-1);
     flex-shrink: 0;
     -webkit-tap-highlight-color: transparent;
+    z-index: 2001;
+    position: relative;
   }
 
   .mobile-nav-toggle svg {
-    width: 22px;
-    height: 22px;
+    display: none;
   }
 
-  nav .links {
+  /* Hamburger bars — morph to X on open */
+  .mobile-nav-toggle .hamburger-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+                opacity 0.25s ease;
+    transform-origin: center;
+  }
+
+  .mobile-nav-toggle .hamburger-bar + .hamburger-bar {
+    margin-top: 5px;
+  }
+
+  .mobile-nav-toggle.open .hamburger-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .mobile-nav-toggle.open .hamburger-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-nav-toggle.open .hamburger-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* ── Links: hidden by default, shown inside expanded nav via keyframes ── */
+  .links {
+    display: none;
+  }
+
+  .links .apple-switch .apple-switch-knob {
+    width: 30px;
+    height: 30px;
+  }
+
+  @keyframes linkFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes switchFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Nav morphs into fullscreen overlay when open ── */
+  nav {
+    transition: top 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                left 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                right 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                bottom 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                border-radius 0.35s ease;
+  }
+
+  nav.open {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--bg);
+    border-radius: 0;
+    max-width: 100%;
+    margin: 0;
+    overflow: visible;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    background: rgba(38, 38, 40, 0.55);
+    backdrop-filter: blur(40px) saturate(1.4);
+    -webkit-backdrop-filter: blur(40px) saturate(1.4);
+    box-shadow:
+      inset var(--spec-x) var(--spec-y) 5px 0 var(--glass-specular),
+      inset calc(var(--spec-x) * -0.5) calc(var(--spec-y) * -0.5) 2px 0 rgba(255,255,255,0.1),
+      inset 0 0 0 1.5px var(--glass-border),
+      0 12px 48px rgba(0, 0, 0, 0.35);
+  }
+
+  [data-theme="light"] nav.open {
+    background: rgba(255, 255, 255, 0.55);
+  }
+
+  nav.open .logo {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.65rem;
+  }
+
+  nav.open .mobile-nav-toggle {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.65rem;
+  }
+
+  /* Show links and animate in with staggered fade */
+  nav.open .links {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 2.2rem;
-    z-index: 999;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
   }
 
-  nav .links.open {
-    opacity: 1;
-    pointer-events: all;
+  nav.open .links a {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--text-1);
+    text-decoration: none;
+    animation: linkFadeIn 0.3s ease 0.1s both;
   }
 
-  nav .links a {
-    font-size: 1.3rem;
+  nav.open .links a:nth-child(2) { animation-delay: 0.15s; }
+  nav.open .links a:nth-child(3) { animation-delay: 0.2s; }
+  nav.open .links a:nth-child(4) { animation-delay: 0.25s; }
+
+  nav.open .links .apple-switch {
+    margin-top: 1.5rem;
+    width: 60px;
+    height: 34px;
+    animation: switchFadeIn 0.3s ease 0.3s both;
   }
 
+  /* Theme switch: keep in the bar on mobile */
   .apple-switch {
     width: 52px;
     height: 30px;
@@ -357,8 +448,25 @@ p {
     height: 26px;
   }
 
+  [data-theme="light"] .links .apple-switch:not(.dragging) .apple-switch-knob {
+    transform: translateX(26px);
+  }
+
+  nav .links .apple-switch.dragging .apple-switch-knob,
+  nav .links .apple-switch:active .apple-switch-knob {
+    width: 44px;
+    height: 38px;
+    top: -2px;
+    border-radius: 19px;
+  }
+
+  [data-theme="light"] .links .apple-switch:not(.dragging):active .apple-switch-knob {
+    transform: translateX(12px);
+  }
+
+  /* Content spacing */
   main {
-    padding: 4.2rem 0.85rem 2.5rem;
+    padding: 4.2rem 0.75rem 2.5rem;
   }
 
   h1 {

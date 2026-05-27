@@ -10,7 +10,9 @@
     <script src="engine.js" defer></script>
     <script src="specular.js" defer></script>
     <script src="init.js" defer></script>
+    <script src="terminal.js" defer></script>
     <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="terminal.css">
 </head>
 <body>
     <div id="svg-filters-container"></div>
@@ -19,9 +21,11 @@
         <nav class="liquid-glass nav-glass">
             <a href="index.html" class="logo">Kaesar Wu</a>
             <button class="mobile-nav-toggle" aria-label="Open menu" id="mobile-nav-toggle">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-        </button>
-        <div class="links" id="nav-links">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+            <div class="links" id="nav-links">
                 <a href="index.html" class="active">Home</a>
                 <a href="journalism.html">Journalism</a>
                 <a href="gallery.html">Gallery</a>
@@ -62,6 +66,25 @@
             </div>
         </div>
     </main>
-    <script src="init.js" defer></script>
+
+    <div id="terminal-overlay">
+        <div class="terminal-resize-handle" id="terminal-resize-handle"></div>
+        <div class="terminal-header">
+            <div class="terminal-header-label">
+                <span class="dot"></span>
+                KWDEV TERMINAL
+            </div>
+            <div class="terminal-header-actions">
+                <button class="terminal-header-btn" id="terminal-close-btn" title="Close terminal">✕</button>
+            </div>
+        </div>
+        <div class="terminal-body">
+            <div class="terminal-output"></div>
+            <div class="terminal-input-line">
+                <span class="terminal-prompt">kwdev@verstappen:~$</span>
+                <input type="text" spellcheck="false" autocomplete="off" />
+            </div>
+        </div>
+    </div>
 </body>
 </html>
