@@ -110,12 +110,23 @@
       const newSrc = currentImages[currentIndex];
 
       lightboxImg.classList.remove('slide-in-left', 'slide-in-right');
+      lightboxImg.classList.add('is-loading');
       void lightboxImg.offsetWidth;
-      lightboxImg.src = newSrc;
 
-      if (animationClass) {
-        lightboxImg.classList.add(animationClass);
-      }
+      const preloadImage = new Image();
+      preloadImage.onload = () => {
+        lightboxImg.src = newSrc;
+        lightboxImg.classList.remove('is-loading');
+
+        if (animationClass) {
+          lightboxImg.classList.add(animationClass);
+        }
+      };
+      preloadImage.onerror = () => {
+        lightboxImg.classList.remove('is-loading');
+        handleLightboxImageError();
+      };
+      preloadImage.src = newSrc;
     }
 
     function openLightbox(index) {
