@@ -686,8 +686,7 @@ p {
   object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 16px 64px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  will-change: transform, opacity;
+  transition: transform 0.3s ease;
 }
 
 #lightbox .lightbox-content {
