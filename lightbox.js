@@ -67,7 +67,17 @@
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
     const closeBtn = document.querySelector('.close-btn');
+    const authModal = document.getElementById('sgcnz-auth-modal');
+    const authInput = document.getElementById('sgcnz-code-input');
+    const authSubmit = document.getElementById('sgcnz-code-submit');
+    const authError = document.getElementById('sgcnz-auth-error');
+    const warningPanel = document.getElementById('sgcnz-warning-panel');
+    const warningCheckbox = document.getElementById('sgcnz-warning-checkbox');
+    const warningContinue = document.getElementById('sgcnz-warning-continue');
+    const authCloseBtn = document.querySelector('.auth-close-btn');
 
+    const accessCode = '2026outstandingstudentdirectensembleworkawardwinners';
+    let accessGranted = false;
     let currentImages = [];
     let currentIndex = 0;
     let dragStartX = 0;
@@ -77,10 +87,70 @@
       currentImages = Array.from(document.querySelectorAll('.gallery-item:not(.folder-card) img')).map((img) => img.src);
     }
 
-    function openSgcNzFolder() {
+    function resetSgcnzAuth() {
+      if (!authModal) return;
+      authError.textContent = '';
+      authInput.value = '';
+      warningCheckbox.checked = false;
+      warningContinue.disabled = true;
+      warningPanel.classList.add('hidden');
+      authSubmit.disabled = false;
+    }
+
+    function openSgcnzAuth() {
+      if (!authModal) return;
+      resetSgcnzAuth();
+      authModal.classList.add('active');
+      authModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      authInput.focus();
+    }
+
+    function closeSgcnzAuth() {
+      if (!authModal) return;
+      authModal.classList.remove('active');
+      authModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function handleSgcnzCodeSubmit() {
+      if (!authInput) return;
+      const enteredCode = authInput.value.trim();
+      if (enteredCode !== accessCode) {
+        authError.textContent = 'Incorrect code. Please try again.';
+        return;
+      }
+      authError.textContent = '';
+      warningPanel.classList.remove('hidden');
+      authSubmit.disabled = true;
+      warningCheckbox.focus();
+    }
+
+    function handleWarningChange() {
+      warningContinue.disabled = !warningCheckbox.checked;
+    }
+
+    function openSgcnzAlbum() {
+      if (!accessGranted && sessionStorage.getItem('sgcnzAccessGranted') === 'true') {
+        accessGranted = true;
+      }
+
+      if (!accessGranted) {
+        openSgcnzAuth();
+        return;
+      }
+
       currentImages = sgcnzImages.map((filename) => `${galleryHost}/${filename}`);
       setLightboxImage(0);
       openLightbox();
+    }
+
+    function handleWarningContinue() {
+      if (!warningCheckbox.checked) return;
+      accessGranted = true;
+      sessionStorage.setItem('sgcnzAccessGranted', 'true');
+      closeSgcnzAuth();
+      openSgcnzAlbum();
     }
 
     function setLightboxImage(index, animationClass) {
@@ -161,11 +231,43 @@
       });
 
       if (sgcnzFolder) {
-        sgcnzFolder.addEventListener('click', openSgcNzFolder);
+        sgcnzFolder.addEventListener('click', openSgcnzAlbum);
         sgcnzFolder.addEventListener('keydown', (event) => {
           if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
-            openSgcNzFolder();
+            openSgcnzAlbum();
+          }
+        });
+      }
+
+      if (authSubmit) {
+        authSubmit.addEventListener('click', handleSgcnzCodeSubmit);
+      }
+
+      if (warningCheckbox) {
+        warningCheckbox.addEventListener('change', handleWarningChange);
+      }
+
+      if (warningContinue) {
+        warningContinue.addEventListener('click', handleWarningContinue);
+      }
+
+      if (authCloseBtn) {
+        authCloseBtn.addEventListener('click', closeSgcnzAuth);
+      }
+
+      if (authModal) {
+        authModal.addEventListener('click', (event) => {
+          if (event.target === authModal) {
+            closeSgcnzAuth();
+          }
+        });
+      }
+
+      if (authInput) {
+        authInput.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter') {
+            handleSgcnzCodeSubmit();
           }
         });
       }

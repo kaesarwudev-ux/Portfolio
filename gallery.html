@@ -118,7 +118,7 @@
         </div>
 
         <h2>SGCNZ Nationals photos!</h2>
-        <p>Not in any particular order.</p>
+        <p>Not in any particular order. Enter the access code to open the album.</p>
         <div class="gallery-grid">
             <div class="liquid-glass interactive-glass gallery-item folder-card" id="sgcnz-folder" tabindex="0" role="button" aria-label="Open SGCNZ folder gallery">
                 <div class="folder-preview" aria-hidden="true">
@@ -142,6 +142,28 @@
             </div>
             <button class="nav-btn next-btn" type="button" aria-label="Next photo">›</button>
             <button class="close-btn" type="button" aria-label="Close photo viewer">×</button>
+        </div>
+    </div>
+
+    <div id="sgcnz-auth-modal" class="auth-modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="auth-modal-panel liquid-glass">
+            <button class="auth-close-btn close-btn" type="button" aria-label="Close access dialog">×</button>
+            <h3>Protected SGCNZ photos</h3>
+            <p class="text-sm">Enter the access code. After it is accepted, you must acknowledge the legal warning before viewing the photos.</p>
+            <label class="auth-field">
+                <span>Access code</span>
+                <input id="sgcnz-code-input" type="text" autocomplete="off" aria-label="SGCNZ access code">
+            </label>
+            <button id="sgcnz-code-submit" class="button" type="button">Submit code</button>
+            <p id="sgcnz-auth-error" class="auth-error" aria-live="assertive"></p>
+            <div id="sgcnz-warning-panel" class="auth-warning hidden">
+                <p><strong>Legal warning:</strong> I will not be responsible for any legal problems.</p>
+                <label class="auth-warning-checkbox">
+                    <input id="sgcnz-warning-checkbox" type="checkbox">
+                    I agree and accept the legal warning.
+                </label>
+                <button id="sgcnz-warning-continue" class="button" type="button" disabled>Access photos</button>
+            </div>
         </div>
     </div>
 
