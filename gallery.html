@@ -87,35 +87,63 @@
 
     <main>
         <h1>My Gallery</h1>
+        <h2>General</h2>
         <p>Mostly Max Verstappen Related stuff.</p>
 
         <div class="gallery-grid">
             <div class="liquid-glass interactive-glass gallery-item">
-                <img src="assets/img/maximusverstoppeniaplantdrawing.png" alt="Maximus Verstoppenia Plant Drawing">
+                <img src="assets/img/maximusverstoppeniaplantdrawing.png" alt="Maximus Verstoppenia Plant Drawing" loading="lazy" decoding="async">
                 <div class="gallery-meta mono">Maximus Verstoppenia Drawing</div>
             </div>
             <div class="liquid-glass interactive-glass gallery-item">
-                <img src="assets/img/maxverstappenbookmarkfront.png" alt="Max Verstappen Bookmark — Front">
+                <img src="assets/img/maxverstappenbookmarkfront.png" alt="Max Verstappen Bookmark — Front" loading="lazy" decoding="async">
                 <div class="gallery-meta mono">Bookmark Front</div>
             </div>
             <div class="liquid-glass interactive-glass gallery-item">
-                <img src="assets/img/maxverstappenbookmarkback.png" alt="Max Verstappen Bookmark — Back">
+                <img src="assets/img/maxverstappenbookmarkback.png" alt="Max Verstappen Bookmark — Back" loading="lazy" decoding="async">
                 <div class="gallery-meta mono">Bookmark Back</div>
             </div>
             <div class="liquid-glass interactive-glass gallery-item">
-                <img src="assets/img/sidverstappenplush.png" alt="Sid Verstappen Plush">
+                <img src="assets/img/sidverstappenplush.png" alt="Sid Verstappen Plush" loading="lazy" decoding="async">
                 <div class="gallery-meta mono">Sid Verstappen Plush</div>
             </div>
             <div class="liquid-glass interactive-glass gallery-item">
-                <img src="assets/img/sidverstappenplushiewatchingmaxverstappen.png" alt="Sid Plush watching Max Verstappen race">
+                <img src="assets/img/sidverstappenplushiewatchingmaxverstappen.png" alt="Sid Plush watching Max Verstappen race" loading="lazy" decoding="async">
                 <div class="gallery-meta mono">Sid Watching Max Race</div>
             </div>
             <div class="liquid-glass interactive-glass gallery-item">
-                <img src="assets/img/MaxineVerstappen.jpg" alt="Maxine Verstappen">
+                <img src="assets/img/MaxineVerstappen.jpg" alt="Maxine Verstappen" loading="lazy" decoding="async">
                 <div class="gallery-meta mono">My cutie patootie</div>
             </div>
         </div>
+
+        <h2>SGCNZ Nationals photos!</h2>
+
+        <div class="gallery-grid">
+            <div class="liquid-glass interactive-glass gallery-item folder-card" id="sgcnz-folder" tabindex="0" role="button" aria-label="Open SGCNZ folder gallery">
+                <div class="folder-preview" aria-hidden="true">
+                    <div class="folder-stack">
+                        <div class="folder-stack-item stack-back"></div>
+                        <div class="folder-stack-item stack-middle"></div>
+                        <div class="folder-stack-item stack-front"></div>
+                    </div>
+                    <div class="folder-chip">SGCNZ</div>
+                </div>
+                <div class="folder-label mono">Click to open album</div>
+            </div>
+        </div>
     </main>
+
+    <div id="lightbox" aria-hidden="true">
+        <div class="lightbox-content">
+            <button class="nav-btn prev-btn" type="button" aria-label="Previous photo">‹</button>
+            <div class="lightbox-img-wrapper">
+                <img id="lightbox-img" alt="SGCNZ Nationals photo viewer">
+            </div>
+            <button class="nav-btn next-btn" type="button" aria-label="Next photo">›</button>
+            <button class="close-btn" type="button" aria-label="Close photo viewer">×</button>
+        </div>
+    </div>
 
     <div id="terminal-overlay">
         <div class="terminal-resize-handle" id="terminal-resize-handle"></div>
