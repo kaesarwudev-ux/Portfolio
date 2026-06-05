@@ -15,6 +15,27 @@
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="terminal.css">
 
+    <style>
+        .video-item {
+            aspect-ratio: 16 / 9;
+            grid-column: span 2;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+
+        .video-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .video-item {
+                grid-column: span 1;
+            }
+        }
+    </style>
+
     <svg style="position:absolute;width:0;height:0;pointer-events:none" aria-hidden="true">
         <defs>
             <filter id="filter-convex" color-interpolation-filters="sRGB">
@@ -113,7 +134,14 @@
             </div>
             <div class="liquid-glass interactive-glass gallery-item">
                 <img src="assets/img/MaxineVerstappen.jpg" alt="Maxine Verstappen" loading="lazy" decoding="async">
-                <div class="gallery-meta mono">My cutie patootie</div>
+                <div class="gallery-meta mono">My cutie patootie jkjk</div>
+            </div>
+            <div class="liquid-glass interactive-glass gallery-item video-item">
+                <video controls preload="metadata">
+                    <source src="assets/vid/190WPM MONKEYTYPE PB.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="gallery-meta mono">190 WPM MonkeyType PB</div>
             </div>
         </div>
 
