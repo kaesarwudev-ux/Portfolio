@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Journalism — Kaesar Wu</title>
-    <meta name="description" content="Kaesar Wu's journalism portfolio — News Committee stories and published articles.">
+    <title>Products — Kaesar Wu</title>
+    <meta name="description" content="Software products by Kaesar Wu — LocalFirst-Flashcards and more.">
     <script src="theme-init.js"></script>
     <script src="theme.js" defer></script>
     <script src="engine.js" defer></script>
@@ -74,9 +74,9 @@
             </button>
             <div class="links" id="nav-links">
                 <a href="index.html">Home</a>
-                <a href="journalism.html" class="active">Journalism</a>
+                <a href="journalism.html">Journalism</a>
                 <a href="gallery.html">Gallery</a>
-                <a href="products.html">Products</a>
+                <a href="products.html" class="active">Products</a>
                 <a href="about.html">About</a>
                 <div id="theme-switch" class="apple-switch" title="Toggle theme">
                     <div class="apple-switch-knob"></div>
@@ -86,61 +86,35 @@
     </header>
 
     <main>
-        <h1>Journalism</h1>
-        <p>As a Times junior journalist and News Committee writer, I cover stories that matter to our community. Here's my recent work.</p>
+        <h1>Products</h1>
+        <p>Software I've built and published.</p>
 
-        <div style="margin-top:3rem">
-
-            <h2 style="margin-bottom:1.5rem">Macleans News Committee</h2>
-            <p style="margin-bottom:2rem; color: var(--text-2);">
-                I'm a News Committee Writer at <a href="https://macleansnews.nz" target="_blank" class="external-link">Macleans News</a>, covering events, activities, and stories from Macleans College and the wider South-East Auckland community.
-            </p>
-
-            <div class="grid-2" style="margin-bottom:3rem">
-                <div class="liquid-glass about-section interactive-glass">
-                    <h3>Featured Stories</h3>
-                    <ul>
-                        <li>
-                            <a href="https://macleansnews.nz/2026/04/19/a-tricky-card-game-bridge/" target="_blank" class="external-link">A "Tricky" Card Game – Bridge</a>
-                        </li>
-                        <li>
-                            <a href="https://macleansnews.nz/2026/03/on-the-29th-of-march-the-annual-sgcnz-south-east-auckland-regional-shakespeare/" target="_blank" class="external-link">South-East Auckland Shakespeare Festival Coverage</a>
-                        </li>
-                        <li>
-                            <a href="https://macleansnews.nz" target="_blank" class="external-link">View more on Macleans News</a>
-                        </li>
-                    </ul>
+        <div class="products-grid">
+            <div class="liquid-glass product-card">
+                <div class="product-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        <line x1="8" y1="7" x2="16" y2="7"/>
+                        <line x1="8" y1="11" x2="14" y2="11"/>
+                        <line x1="8" y1="15" x2="12" y2="15"/>
+                    </svg>
                 </div>
-
-                <div class="liquid-glass about-section interactive-glass">
-                    <h3>Coverage Areas</h3>
-                    <ul>
-                        <li>School events and athletics</li>
-                        <li>Performing arts & drama</li>
-                        <li>Student activities & clubs</li>
-                        <li>Community features</li>
-                        <li>Cultural events</li>
-                    </ul>
+                <h3>LocalFirst-Flashcards</h3>
+                <p class="product-desc">A desktop flashcard app built with Tauri. Study offline, sync when online. Your data stays local first.</p>
+                <div class="product-meta mono">
+                    <span>v0.1.0</span>
+                    <span>Windows x64</span>
+                    <span>NSIS Installer</span>
                 </div>
-            </div>
-
-
-            <h2 style="margin-bottom:1.5rem">Eastern Times NZ</h2>
-            <p style="margin-bottom:2rem; color: var(--text-2);">
-                As a Times junior journalist, I contribute stories to Eastern Times NZ, covering local news and events in the Auckland/New Zealand region.
-            </p>
-
-            <div class="liquid-glass about-section interactive-glass">
-                <h3>Recent Contributions</h3>
-                <p style="color: var(--text-2); margin-bottom: 1rem;">
-                    <a href="https://www.times.co.nz/business/school-pupils-drawn-to-discords-helpful-tech/" target="_blank" class="external-link">School Pupils Drawn to Discord's Helpful Tech</a>
-                </p>
-                <p style="color: var(--text-2); margin-bottom: 1rem;">
-                    <a href="https://www.times.co.nz/news/community-patrollers-help-to-keep-us-safe/" target="_blank" class="external-link">Community Patrollers Help to Keep Us Safe</a>
-                </p>
-                <p>
-                    <a href="https://www.times.co.nz/" target="_blank" class="external-link">Check out Eastern Times NZ</a>
-                </p>
+                <a href="bundle/nsis/LocalFirst-Flashcards_0.1.0_x64-setup.exe" class="product-btn" download>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    Download Installer
+                </a>
             </div>
         </div>
     </main>
@@ -152,7 +126,7 @@
                 KWDEV TERMINAL
             </div>
             <div class="terminal-header-actions">
-                <button class="terminal-header-btn" id="terminal-close-btn" title="Close terminal">✕</button>
+                <button class="terminal-header-btn" id="terminal-close-btn" title="Close terminal">&#10005;</button>
             </div>
         </div>
         <div class="terminal-body">
