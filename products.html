@@ -127,23 +127,23 @@
                 </div>
                 <details class="macos-help">
                     <summary>macOS says "damaged", "modified", or won't open?</summary>
-                    <p>This app isn't signed with an Apple Developer certificate, so macOS blocks it. Try these in order:</p>
+                    <p>This app isn't signed with an Apple Developer certificate, so macOS blocks it. First, open the DMG and <strong>drag the app into your Applications folder</strong>, then try these in order:</p>
                     <ol>
                         <li>
-                            <strong>Right-click → Open</strong> (not double-click), then click <strong>Open</strong> in the dialog.
+                            <strong>Right-click → Open</strong> on the app in Applications (not double-click), then click <strong>Open</strong> in the dialog.
                         </li>
                         <li>
-                            Open <strong>Terminal</strong> and remove the quarantine flag:
+                            Open <strong>Terminal</strong> and remove the quarantine flag from the DMG:
                             <pre>xattr -d com.apple.quarantine ~/Downloads/LocalFirst-Flashcards_0.2.0_aarch64.dmg</pre>
-                            Then open the DMG normally.
+                            Then open the DMG and drag the app to Applications again.
                         </li>
                         <li>
-                            Extract the <code>.app</code> from the DMG, then clear all extended attributes:
-                            <pre>xattr -cr /path/to/LocalFirst-Flashcards.app</pre>
+                            Clear all extended attributes on the installed app:
+                            <pre>xattr -cr /Applications/LocalFirst-Flashcards.app</pre>
                         </li>
                         <li>
-                            If you still see <strong>"app has been modified or damaged"</strong>, run this to fully reset Gatekeeper attributes:
-                            <pre>sudo xattr -rd com.apple.quarantine /path/to/LocalFirst-Flashcards.app</pre>
+                            If you still see <strong>"app has been modified or damaged"</strong>, fully reset Gatekeeper:
+                            <pre>sudo xattr -rd com.apple.quarantine /Applications/LocalFirst-Flashcards.app</pre>
                             You'll be prompted for your Mac login password.
                         </li>
                     </ol>
