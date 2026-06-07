@@ -125,6 +125,30 @@
                         macOS (.dmg)
                     </a>
                 </div>
+                <details class="macos-help">
+                    <summary>macOS says "damaged", "modified", or won't open?</summary>
+                    <p>This app isn't signed with an Apple Developer certificate, so macOS blocks it. Try these in order:</p>
+                    <ol>
+                        <li>
+                            <strong>Right-click → Open</strong> (not double-click), then click <strong>Open</strong> in the dialog.
+                        </li>
+                        <li>
+                            Open <strong>Terminal</strong> and remove the quarantine flag:
+                            <pre>xattr -d com.apple.quarantine ~/Downloads/LocalFirst-Flashcards_0.2.0_aarch64.dmg</pre>
+                            Then open the DMG normally.
+                        </li>
+                        <li>
+                            Extract the <code>.app</code> from the DMG, then clear all extended attributes:
+                            <pre>xattr -cr /path/to/LocalFirst-Flashcards.app</pre>
+                        </li>
+                        <li>
+                            If you still see <strong>"app has been modified or damaged"</strong>, run this to fully reset Gatekeeper attributes:
+                            <pre>sudo xattr -rd com.apple.quarantine /path/to/LocalFirst-Flashcards.app</pre>
+                            You'll be prompted for your Mac login password.
+                        </li>
+                    </ol>
+                    <p class="macos-note">Windows Defender or macOS Gatekeeper may flag unsigned apps. I build and scan every release myself — it's clean. Follow the steps above to override. Download and use at your own risk, if you have any strong, concrete proof it is this app that has caused damage or harm to your system I wil take legal responsiblity.</p>
+                </details>
             </div>
         </div>
     </main>
