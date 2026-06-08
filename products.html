@@ -103,12 +103,13 @@
                 <h3>LocalFirst-Flashcards - Pre-Alpha</h3>
                 <p class="product-desc">A desktop flashcard and notes app built with Tauri. Study offline. Supports Ollama for offline work along with other common AI providers. May have lots of bugs as it is in Pre-Alpha.</p>
                 <div class="product-meta mono">
-                    <span>v0.2.0</span>
+                    <span>v0.3.0</span>
                     <span>Windows x64</span>
                     <span>macOS Apple Silicon</span>
+                    <span>Android</span>
                 </div>
                 <div class="product-downloads">
-                    <a href="https://github.com/kaesarwudev-ux/flashcard-updates/releases/download/v0.2.0/LocalFirst-Flashcards_0.2.0_x64-setup.exe" class="product-btn" download>
+                    <a href="https://github.com/kaesarwudev-ux/flashcard-updates/releases/download/v0.3.0/LocalFirst-Flashcards_0.3.0_x64-setup.exe" class="product-btn" download>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/>
                             <line x1="9" y1="12" x2="15" y2="12"/>
@@ -116,7 +117,7 @@
                         </svg>
                         Windows (.exe)
                     </a>
-                    <a href="https://github.com/kaesarwudev-ux/flashcard-updates/releases/download/v0.2.0/LocalFirst-Flashcards_0.2.0_aarch64.dmg" class="product-btn" download>
+                    <a href="https://github.com/kaesarwudev-ux/flashcard-updates/releases/download/v0.3.0/LocalFirst-Flashcards_0.3.0_aarch64.dmg" class="product-btn" download>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                             <path d="M2 17l10 5 10-5"/>
@@ -124,9 +125,35 @@
                         </svg>
                         macOS (.dmg)
                     </a>
+                    <a href="https://github.com/kaesarwudev-ux/flashcard-updates/releases/download/v0.3.0/LocalFirst-Flashcards-0.3.0-signed.apk" class="product-btn" download>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="3"/>
+                            <circle cx="12" cy="12" r="2"/>
+                            <line x1="12" y1="16" x2="12" y2="20"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                        </svg>
+                        Android (.apk)
+                    </a>
                 </div>
                 <details class="macos-help">
-                    <summary>Chrome / other browsers</summary>
+                    <summary>Android blocked the install?</summary>
+                    <ol>
+                        <li>
+                            <strong>Chrome blocked the APK download</strong> — tap the download notification, then tap <strong>Keep</strong> or <strong>Download anyway</strong>.
+                        </li>
+                        <li>
+                            <strong>"Install blocked" / "Unknown sources"</strong> — go to <strong>Settings → Security</strong> (or <strong>Settings → Apps → Special app access → Install unknown apps</strong>), find <strong>Chrome / Files</strong>, and toggle <strong>Allow from this source</strong> on.
+                        </li>
+                        <li>
+                            <strong>Google Play Protect</strong> — it may say "blocked by Play Protect". Tap <strong>More details</strong> → <strong>Install anyway</strong>.
+                        </li>
+                        <li>
+                            <strong>"App not installed"</strong> — the APK may be for a different architecture. Make sure you downloaded the correct version for your device.
+                        </li>
+                    </ol>
+                </details>
+                <details class="macos-help">
+                    <summary>Chrome / other browsers (desktop)</summary>
                     <ol>
                         <li>
                             <strong>Chrome blocked the download</strong> — click the arrow or <strong>Show more</strong> next to the warning, then select <strong>Keep</strong> or <strong>Keep anyway</strong>.
@@ -159,7 +186,7 @@
                         </li>
                         <li>
                             Open <strong>Terminal</strong> and remove the quarantine flag from the DMG:
-                            <pre>xattr -d com.apple.quarantine ~/Downloads/LocalFirst-Flashcards_0.2.0_aarch64.dmg</pre>
+                            <pre>xattr -d com.apple.quarantine ~/Downloads/LocalFirst-Flashcards_0.3.0_aarch64.dmg</pre>
                             Then open the DMG and drag the app to Applications again.
                         </li>
                         <li>
@@ -177,6 +204,7 @@
             </div>
         </div>
     </main>
+
 
     <div id="terminal-overlay">
         <div class="terminal-resize-handle" id="terminal-resize-handle"></div>

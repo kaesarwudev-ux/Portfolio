@@ -961,7 +961,7 @@ p {
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: minmax(0, 600px);
   gap: 1.5rem;
   margin-top: 2rem;
 }
@@ -1014,22 +1014,23 @@ p {
 }
 
 .product-downloads {
-  display: flex;
-  gap: 0.75rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.6rem;
   margin-top: auto;
-  flex-wrap: wrap;
 }
 
 .product-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.85rem 1.4rem;
-  border-radius: 14px;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.7rem 0.6rem;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.08);
   color: var(--text-1);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 500;
   transition: background 0.2s ease, transform 0.2s ease;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1082,6 +1083,19 @@ p {
   line-height: 1.5;
 }
 
+
+
+.macos-note {
+  margin-top: 1rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.82rem;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
 .macos-help pre {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.78rem;
@@ -1094,17 +1108,6 @@ p {
   color: var(--text-1);
   white-space: pre-wrap;
   word-break: break-all;
-}
-
-.macos-note {
-  margin-top: 1rem;
-  padding: 0.7rem 0.9rem;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  font-size: 0.82rem;
-  color: var(--text-2);
-  line-height: 1.5;
 }
 
 .macos-help code {
@@ -1122,6 +1125,10 @@ p {
 
   .product-card {
     padding: 1.5rem;
+  }
+
+  .product-downloads {
+    grid-template-columns: 1fr;
   }
 
   .macos-help pre {
