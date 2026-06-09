@@ -103,13 +103,13 @@
                 <h3>LocalFirst-Flashcards - Pre-Alpha</h3>
                 <p class="product-desc">A desktop flashcard and notes app built with Tauri. Study offline. Supports Ollama for offline work along with other common AI providers. May have lots of bugs as it is in Pre-Alpha.</p>
                 <div class="product-meta mono">
-                    <span>v0.3.0</span>
+                    <span>v0.3.1</span>
                     <span>Windows x64</span>
                     <span>macOS Apple Silicon</span>
                     <span>Android</span>
                 </div>
                 <div class="product-downloads">
-                    <a href="https://github.com/kaesarwudev-ux/flashcard-updates/releases/download/v0.3.0/LocalFirst-Flashcards_0.3.0_x64-setup.exe" class="product-btn" download>
+                    <a href="https://github.com/kaesarwudev-ux/flashcard-updates/releases/download/v0.3.1/LocalFirst-Flashcards_0.3.1_x64-setup.exe" class="product-btn" download>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/>
                             <line x1="9" y1="12" x2="15" y2="12"/>
@@ -117,7 +117,7 @@
                         </svg>
                         Windows (.exe)
                     </a>
-                    <a href="https://github.com/kaesarwudev-ux/flashcard-updates/releases/download/v0.3.0/LocalFirst-Flashcards_0.3.0_aarch64.dmg" class="product-btn" download>
+                    <a href="https://github.com/kaesarwudev-ux/flashcard-updates/releases/download/v0.3.1/LocalFirst-Flashcards_0.3.1_aarch64.dmg" class="product-btn" download>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                             <path d="M2 17l10 5 10-5"/>
@@ -186,7 +186,7 @@
                         </li>
                         <li>
                             Open <strong>Terminal</strong> and remove the quarantine flag from the DMG:
-                            <pre>xattr -d com.apple.quarantine ~/Downloads/LocalFirst-Flashcards_0.3.0_aarch64.dmg</pre>
+                            <pre>xattr -d com.apple.quarantine ~/Downloads/LocalFirst-Flashcards_0.3.1_aarch64.dmg</pre>
                             Then open the DMG and drag the app to Applications again.
                         </li>
                         <li>
@@ -205,6 +205,20 @@
         </div>
     </main>
 
+    <script>
+    document.querySelectorAll('.macos-help pre').forEach(function(el) {
+        el.style.cursor = 'pointer';
+        el.title = 'Click to copy';
+        el.addEventListener('click', function() {
+            var text = this.textContent;
+            navigator.clipboard.writeText(text).then(function() {
+                var orig = el.textContent;
+                el.textContent = 'Copied!';
+                setTimeout(function() { el.textContent = orig; }, 1200);
+            });
+        });
+    });
+    </script>
 
     <div id="terminal-overlay">
         <div class="terminal-resize-handle" id="terminal-resize-handle"></div>
